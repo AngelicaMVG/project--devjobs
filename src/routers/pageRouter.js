@@ -4,11 +4,13 @@ const fs = require("fs-extra");
 const pageRouter = Router();
 
 pageRouter.get("/", (req, res) => {
-  res.send("<h1>HOME page</h1>");
+  res.type("text/html");
+  res.render(`${__dirname}/../views/home.ejs`);
 });
 
 pageRouter.get("/about", (req, res) => {
-  res.send("<h1>ABOUT Page</h1>");
+  res.type("text/html");
+  res.render(`${__dirname}/../views/about.ejs`);
 });
 
 module.exports = pageRouter;

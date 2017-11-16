@@ -1,5 +1,6 @@
 const express = require("express");
 const fs = require("fs-extra");
+const ejs = require("ejs");
 
 const app = express();
 
@@ -11,7 +12,8 @@ app.use("/api", apiRouter);
 app.use(express.static(__dirname + "/public"));
 
 app.use((req, res) => {
-  res.send("<h1>404. Not found.</h1>");
+  res.type("text/html");
+  res.render(`${__dirname}/src/views/404.ejs`);
 });
 
 const PORT = process.env.PORT || 3000;
