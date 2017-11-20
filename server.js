@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs-extra");
 const ejs = require("ejs");
+const { Model } = require("objection");
 
 const pageRouter = require("./src/routers/pageRouter.js");
 const apiRouter = require("./src/routers/apiRouter.js");
@@ -10,6 +11,8 @@ const knexfile = require("./knexfile.js");
 
 const app = express();
 const appDb = connectToDb(knexfile.development);
+
+Model.knex(appDb);
 
 app.locals.db = appDb; //locals: esta disponible en toda la app de express
 

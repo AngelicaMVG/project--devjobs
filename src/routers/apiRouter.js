@@ -1,21 +1,16 @@
 const Router = require("express").Router;
 const apiRouter = Router();
 
-function getAllJobs(req, res) {
-  const db = req.app.locals.db;
+const Job = require("../models/Job.js");
+const Company = require("../models/Company.js");
 
-  db
-    .select()
-    .table("jobs")
-    .then(data => res.json(data));
+function getAllJobs(req, res) {
+  Job.query().then(data => res.json(data));
 }
 
 function getAllCompanies(req, res) {
-  const db = req.app.locals.db;
-
-  db
-    .select()
-    .table("company")
+  Company.query()
+    .eager("jobs")
     .then(data => res.json(data));
 }
 
