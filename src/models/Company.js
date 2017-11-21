@@ -12,7 +12,7 @@ class Company extends Model {
         relation: Model.HasManyRelation,
         modelClass: Jobs,
         join: {
-          from: "company.companyId",
+          from: "company.id",
           to: "jobs.companyId"
         }
       }

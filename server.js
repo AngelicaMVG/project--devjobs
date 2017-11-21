@@ -2,6 +2,7 @@ const express = require("express");
 const fs = require("fs-extra");
 const ejs = require("ejs");
 const { Model } = require("objection");
+const bodyParser = require("body-parser");
 
 const pageRouter = require("./src/routers/pageRouter.js");
 const apiRouter = require("./src/routers/apiRouter.js");
@@ -15,6 +16,11 @@ const appDb = connectToDb(knexfile.development);
 Model.knex(appDb);
 
 app.locals.db = appDb; //locals: esta disponible en toda la app de express
+
+//Json parse configuration
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.set("view engine", "ejs");
 app.use("/", pageRouter);
