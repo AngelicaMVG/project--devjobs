@@ -55,12 +55,17 @@ app.set("view engine", "ejs");
 app.use("/", pageRouter);
 app.use("/api", apiRouter);
 app.use("/auth", authRouter);
+
 app.use(express.static(__dirname + "/public"));
 
 app.use((req, res) => {
-  res.type("text/html");
-  res.render(`${__dirname}/src/views/404.ejs`);
+  res.render(`${__dirname}/src/views/reactApp.ejs`);
 });
+
+// app.use((req, res) => {
+//   res.type("text/html");
+//   res.render(`${__dirname}/src/views/404.ejs`);
+// });
 
 const PORT = process.env.PORT || 3000;
 
