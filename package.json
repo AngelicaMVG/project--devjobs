@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "npm-run-all --parallel dev:server dev:webpack",
     "dev:webpack": "./node_modules/.bin/webpack --watch",
-    "dev:server":
-      "NODE_ENV=development nodemon server.js --watch src --watch server.js --ignore src/client",
+    "dev:server": "NODE_ENV=development nodemon server.js --watch src --watch server.js --ignore src/client",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -30,7 +29,8 @@
     "passport-local": "1.0.0",
     "react": "16.1.0",
     "react-dom": "16.1.0",
-    "react-router-dom": "4.2.0"
+    "react-router-dom": "4.2.0",
+    "superagent": "^3.8.1"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
